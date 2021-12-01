@@ -19,7 +19,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        centerImage.image = UIImage(named: namesImages.last!)
+        centerImage.image = UIImage(named: namesImages[namesImages.count / 2])
+        
+        transform3D(left: true, for: leftImage)
+        transform3D(left: false, for: rightImage)
         
         if centerImage.image == UIImage(named: namesImages.first!) {
             leftView.isHidden = true
@@ -28,6 +31,23 @@ class ViewController: UIViewController {
         }
     }
 
+    func transform3D(left: Bool, for image: UIImageView) {
+        let direction: Double
+        if left {
+            direction = -1.0
+        } else {
+            direction = 1.0
+        }
+        
+        var transform3D = CATransform3DIdentity
+        transform3D.m34 = direction / 1000
+        transform3D = CATransform3DRotate(transform3D, CGFloat(M_PI) / 5, 0, 1, 0)
 
+        UIView.animate(withDuration: 1.5, animations: {
+
+            image.layer.transform = transform3D
+
+        })
+    }
 }
 
