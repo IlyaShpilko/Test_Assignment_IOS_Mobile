@@ -30,22 +30,40 @@ class ViewController: UIViewController {
         transform3D(left: false, for: rightImage)
         updateUIElements()
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-
-        rightView.addGestureRecognizer(tap)
+        let tapRight = UITapGestureRecognizer(target: self, action: #selector(handleTapRight(_:)))
+        rightView.addGestureRecognizer(tapRight)
         rightView.isUserInteractionEnabled = true
-        self.view.addSubview(rightView)
+        view.addSubview(rightView)
+        
+        let tapLeft = UITapGestureRecognizer(target: self, action: #selector(handleTapLeft(_:)))
+        leftView.addGestureRecognizer(tapLeft)
+        rightView.isUserInteractionEnabled = true
+        view.addSubview(rightView)
     }
 
-    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+    @objc func handleTapRight(_ sender: UITapGestureRecognizer) {
         startIndex = centerImage(arr: namesImages, element: startIndex, right: true)
         let elemenInArray = startIndex
-
+        
         leftImage.image = UIImage(named: namesImages[elemenInArray])
         centerImage.image = UIImage(named: namesImages[elemenInArray + 1])
         
         if elemenInArray + 2 != namesImages.count {
             rightImage.image = UIImage(named: namesImages[elemenInArray + 2])
+        } else {
+            updateUIElements()
+        }
+    }
+    
+    @objc func handleTapLeft(_ sender: UITapGestureRecognizer) {
+        startIndex = centerImage(arr: namesImages, element: startIndex, right: false)
+        let elementInArray = startIndex
+        
+        rightImage.image = UIImage(named: namesImages[elementInArray])
+        centerImage.image = UIImage(named: namesImages[elementInArray - 1])
+        
+        if elementInArray - 2 >= 0 {
+            leftImage.image = UIImage(named: namesImages[elementInArray - 2])
         } else {
             updateUIElements()
         }
