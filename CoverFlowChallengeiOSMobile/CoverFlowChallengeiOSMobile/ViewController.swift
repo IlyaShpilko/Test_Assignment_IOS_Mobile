@@ -23,8 +23,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         startIndex = centerImage(arr: namesImages, element: namesImages.count / 2, right: nil)
-        print(startIndex)
-        centerImage.image = UIImage(named: namesImages[namesImages.count / 2])
+        leftImage.image = UIImage(named: namesImages[startIndex - 1])
+        centerImage.image = UIImage(named: namesImages[startIndex])
+        rightImage.image = UIImage(named: namesImages[startIndex + 1])
         
         transform3D(left: true, for: leftImage)
         transform3D(left: false, for: rightImage)
@@ -39,24 +40,22 @@ class ViewController: UIViewController {
         leftView.addGestureRecognizer(tapLeft)
         rightView.isUserInteractionEnabled = true
         view.addSubview(rightView)
+
     }
 
     @objc func handleTapRight(_ sender: UITapGestureRecognizer) {
-        startIndex = centerImage(arr: namesImages, element: startIndex, right: true)
         let elemenInArray = startIndex
         
         leftImage.image = UIImage(named: namesImages[elemenInArray])
         centerImage.image = UIImage(named: namesImages[elemenInArray + 1])
-        
         if elemenInArray + 2 != namesImages.count {
             rightImage.image = UIImage(named: namesImages[elemenInArray + 2])
-        } else {
-            updateUIElements()
         }
+        updateUIElements()
+        startIndex += 1
     }
     
     @objc func handleTapLeft(_ sender: UITapGestureRecognizer) {
-        startIndex = centerImage(arr: namesImages, element: startIndex, right: false)
         let elementInArray = startIndex
         
         rightImage.image = UIImage(named: namesImages[elementInArray])
@@ -64,16 +63,21 @@ class ViewController: UIViewController {
         
         if elementInArray - 2 >= 0 {
             leftImage.image = UIImage(named: namesImages[elementInArray - 2])
-        } else {
-            updateUIElements()
         }
+        updateUIElements()
+        startIndex -= 1
     }
     
     func updateUIElements() {
+        centerView.layer.zPosition = 1
+
         if centerImage.image == UIImage(named: namesImages.first!) {
             leftView.isHidden = true
         } else if centerImage.image == UIImage(named: namesImages.last!) {
             rightView.isHidden = true
+        } else {
+            leftView.isHidden = false
+            rightView.isHidden = false
         }
     }
 
