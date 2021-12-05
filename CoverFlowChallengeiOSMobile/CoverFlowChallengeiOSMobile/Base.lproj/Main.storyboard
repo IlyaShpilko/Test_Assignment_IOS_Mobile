@@ -19,7 +19,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZZ-z9-gqe">
                                 <rect key="frame" x="266" y="342" width="128" height="212"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kingsofleon-comearoundsunshine" translatesAutoresizingMaskIntoConstraints="NO" id="NLq-2Q-ZeN">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="101" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kingsofleon-comearoundsunshine" translatesAutoresizingMaskIntoConstraints="NO" id="NLq-2Q-ZeN">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="212"/>
                                     </imageView>
                                 </subviews>
@@ -33,7 +33,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rf8-pB-o9o">
                                 <rect key="frame" x="20" y="342" width="131" height="212"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ironmaiden-thefinalfrontier" translatesAutoresizingMaskIntoConstraints="NO" id="VQU-qJ-zFh">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ironmaiden-thefinalfrontier" translatesAutoresizingMaskIntoConstraints="NO" id="VQU-qJ-zFh">
                                         <rect key="frame" x="0.0" y="0.0" width="131" height="212"/>
                                     </imageView>
                                 </subviews>
